@@ -1,7 +1,8 @@
-split_sample
+StringHelper
 ============
 
-split string for c++
+add function to string for c++
 
-First, could you read the source?
-This program is very easy, so you'll understand it.
+Script languages have many function for string.
+But, c++ do not so.
+Because, I created it.
