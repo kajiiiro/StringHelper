@@ -30,12 +30,12 @@ public:
 	std::string getLowerCase(const std::string &strTarget) const;
 	std::vector<std::string::size_type> getIndexList(const std::string &strTarget, const std::string &strKey) const;
 	// if iCount <= 0, return string is empty
-	std::string repeat(const int &iCount) const;
+	std::string repeat(const std::string &strTarget, const int &iCount) const;
 
 private:
 	class impl;
 	impl *pImpl;
-}
+};
 
 }; // namespace kajiiiro
 

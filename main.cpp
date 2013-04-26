@@ -8,33 +8,35 @@ using namespace std;
 
 void splitTest()
 {
-	string str_list = "a,b,c!.d!.e!.f";
-	P("target string[" << str_list << "]");
-	vector<string> vec_str;
-	P("split \",\"");
-	if (false == splitStringList(str_list, ",", vec_str))
+	kajiiiro::StringHelper helper;
+	string strTarget = "  {a,B},,d  ";
+	vector<string> vecStr = helper.split(strTarget, ",");
+	P("target [" << strTarget << "]");
+	P("split by \",\", result");
+	for (auto it = vecStr.begin();it != vecStr.end();++it)
 	{
-		E("NG");
-		return;
+		P("\t" << "[" << *it << "]");
 	}
-	P("result");
-	for (auto it = vec_str.begin();it != vec_str.end();++it)
+	P("get before \",,\", result");
+	P("\t" << "[" << helper.getBefore(strTarget, ",,") << "]");
+	P("get after \",,\", result");
+	P("\t" << "[" << helper.getAfter(strTarget, ",,") << "]");
+	P("trim white space, result");
+	P("\t" << "[" << helper.trimWhiteSpace(strTarget) << "]");
+	P("get between \"{}\", result");
+	P("\t" << "[" << helper.getBetween(strTarget, "{", "}") << "]");
+	P("get upper case, result");
+	P("\t" << "[" << helper.getUpperCase(strTarget) << "]");
+	P("get lower case, result");
+	P("\t" << "[" << helper.getLowerCase(strTarget) << "]");
+	vector<string::size_type> vecSize = helper.getIndexList(strTarget, ",");
+	P("get index list by \",\", result");
+	for (auto it = vecSize.begin();it != vecSize.end();++it)
 	{
-		P("\t" << *it);
+		P("\t" << "[" << *it << "]");
 	}
-	P("");
-	vec_str.clear();
-	P("split \"!.\"");
-	if (false == splitStringList(str_list, "!.", vec_str))
-	{
-		E("NG");
-		return;
-	}
-	P("result");
-	for (auto it = vec_str.begin();it != vec_str.end();++it)
-	{
-		P("\t" << *it);
-	}
+	P("repeat 3, result");
+	P("\t" << "[" << helper.repeat(strTarget, 3) << "]");
 }
 
 int main()
@@ -42,3 +44,4 @@ int main()
 	splitTest();
 	return 0;
 }
+
